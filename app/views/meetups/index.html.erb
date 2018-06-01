@@ -1,0 +1,23 @@
+<!-- <%#= button_to "Create Meetup", new_meetup_path, method: 'get' %> -->
+
+<br>
+<%= form_tag meetups_path, method: 'get' do %>
+    <%= label_tag "Search groups by category" %>
+    <%= text_field_tag :category %>
+
+    <a class="waves-effect waves-light btn"><%= submit_tag "Search" %></a>
+<% end %>
+
+
+<div class="row">
+  <h2>Meetups</h2>
+    <div class="col s12">
+
+      <ul>
+        <% @meetups.each do |meetup| %>
+          <li> <%= link_to meetup.name, meetup_path(meetup) %> </li><br>
+        <% end %>
+      </ul>
+
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<%= form_for @meetup do |f| %>
+
+  <%= f.label :category %>
+  <%= f.text_field :category %><br><br>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br><br>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %><br><br>
+
+  <%= f.label :time, "Date and time" %>
+  <%= f.text_field :time %><br><br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %><br><br>
+
+  <%= f.submit %>
+
+<% end %>

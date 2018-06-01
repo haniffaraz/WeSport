@@ -1,0 +1,15 @@
+<h5>Profile</h5>
+
+<h4>Name:</h6><%= @user.name %><br>
+<h4>Age:</h4><%= @user.age %><br>
+<h4>Gender:</h4><%= @user.gender %><br>
+<h4>Favorite Sport:</h4><%= @user.fav_sport%><br>
+<h4>Bio:</h4><%= @user.bio %><br>
+
+<% @user.meetups.each do |meetup| %>
+  <h1> <%= meetup.name %></h1>
+  <h5> <%= meetup.category %> </h5>
+  <h3> <%= meetup.location %> </h3>
+  <h3> <%= meetup.time.strftime("%A - %H:%M") %> </h3>
+  <p> <%= meetup.description %> </p>
+<% end %>

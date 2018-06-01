@@ -1,0 +1,32 @@
+<h1> Sign up</h1>
+<div class="row">
+ <div class="col-md-6 col-md-offset-3">
+   <%= form_for(@user) do |f| %>
+     <%= f.label :name %>
+     <%= f.text_field :name %><br><br>
+
+     <%= f.label :age %>
+     <%= f.number_field :age, min: 0 %><br><br>
+
+     <%= f.label :gender %>
+     <%= f.text_field :gender %><br><br>
+
+     <%= f.label :fav_sport, "Favorite Sport " %>
+     <%= f.text_field :fav_sport %><br><br>
+
+     <%= f.label :username %>
+     <%= f.text_field :username %><br><br>
+
+     <%= f.label :bio %>
+     <%= f.text_area :bio %><br><br>
+
+     <%= f.label :password_digest, "Password" %>
+     <%= f.password_field :password_digest %><br><br>
+
+     <%= f.label :password_confirmation, "Confirm Password" %>
+     <%= f.password_field :password_confirmation %><br><br>
+
+     <%= f.submit "Create my account", class: "btn btn-primary" %><br><br>
+   <% end %>
+ </div>
+</div>

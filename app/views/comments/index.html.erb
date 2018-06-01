@@ -1,0 +1,4 @@
+<% @meetup.comments.each do |comment| %>
+  <p> <small><%= comment.user.username %> said</small><br>
+    <%= comment.content %> </p>
+<% end %>

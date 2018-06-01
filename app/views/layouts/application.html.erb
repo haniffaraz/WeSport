@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WeSport</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <nav>
+      <div class="nav-wrapper">
+        <a href="/home" class="brand-logo center">WeSport</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="/home">Home</a></li>
+          <li><a href="<%= user_path(current_user) %>">Profile</a></li>
+          <li><% if logged_in? %>
+            <%= link_to "log out", logout_path, method: :delete %>
+            <% else %>
+              <%= link_to "log in", login_path %>
+            <% end %>
+          </li>
+        </ul>
+
+        <ul class="right hide-on-med-and-down">
+          <li><%= link_to "Start a new group", new_meetup_path, method: 'get' %>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+
+  <!-- logout button -->
+
+  <!-- logout button end -->
+
+      <%= yield %>
+
+
+      <footer class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <h6 class="white-text">WeSport</h6>
+              <p class="grey-text text-lighten-4"> <small>Home of local sports meetups. Sport is life.</small></p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text"></h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">About</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Careers</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Help</a></li>
+            </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container"><small>
+          © WeSport 2018 - WeSport will be a wholly owned subsidiary of WeWork Companies Inc.</small>
+          <a class="grey-text text-lighten-4 right" href="#!">Terms of service</a>
+          </div>
+        </div>
+      </footer>
+
+
+    </div>
+  </body>
+</html>
