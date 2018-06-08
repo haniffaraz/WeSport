@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  # before_action :authenticate_current_user!
 
-  before_action :find_user, only: [:show, :edit, :update, :delete, :join, :leave, :joined?]
+  before_action :find_user, only: [:show, :edit, :update, :delete]
 
   def index
     @users = User.all
@@ -38,14 +39,14 @@ class UsersController < ApplicationController
   end
 
   def delete
+    @user.comments.destroy_all
+    # @user.meetups.each do |meetup|
+    #   meetup =
     if @user.destroy
       redirect_to '/index'
     end
   end
 
-  # def signup
-  #   @user = User.new
-  # end
 
   private
 
@@ -54,7 +55,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :age, :gender, :fav_sport, :bio, :username, :password_digest)
+    params.require(:user).permit(:name, :age, :gender, :fav_sport, :bio, :username, :password)
   end
 
 end

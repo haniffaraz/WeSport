@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WeSport</title>
+    <title>WeSports</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,14 +10,19 @@
   </head>
 
   <body>
+
+
     <div class="container">
 
       <nav>
       <div class="nav-wrapper">
-        <a href="/home" class="brand-logo center">WeSport</a>
+        <a href="/home" class="brand-logo center">WeSports</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li><a href="/home">Home</a></li>
-          <li><a href="<%= user_path(current_user) %>">Profile</a></li>
+          <% if current_user != nil %>
+            <li><a href="<%= user_path(current_user) %>">Profile</a></li>
+          <% end %>
+
           <li><% if logged_in? %>
             <%= link_to "log out", logout_path, method: :delete %>
             <% else %>
@@ -46,8 +51,8 @@
         <div class="container">
           <div class="row">
             <div class="col l6 s12">
-              <h6 class="white-text">WeSport</h6>
-              <p class="grey-text text-lighten-4"> <small>Home of local sports meetups. Sport is life.</small></p>
+              <h5 class="white-text">WeSports</h5>
+              <p class="grey-text text-lighten-4"> <h6>The home of local sports meetups.</h6></p>
             </div>
             <div class="col l4 offset-l2 s12">
               <h5 class="white-text"></h5>
@@ -61,7 +66,7 @@
         </div>
         <div class="footer-copyright">
           <div class="container"><small>
-          © WeSport 2018 - WeSport will be a wholly owned subsidiary of WeWork Companies Inc.</small>
+          © WeSport 2018 - WeSports will be a wholly owned subsidiary of WeWork Companies Inc.</small>
           <a class="grey-text text-lighten-4 right" href="#!">Terms of service</a>
           </div>
         </div>

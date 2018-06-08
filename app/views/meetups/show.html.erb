@@ -1,19 +1,33 @@
-<h3> <%= @meetup.name %> Meetup </h3>
+<div class="card center-align">
+<div class="card-header">
+</div>
+<div class="card-body">
+<h4 class="card-title"><b><%= @meetup.name %> Meetup</b></h4>
 
-<%= button_to "Edit Meetup", edit_meetup_path, method: 'get' %><br>
 
-
-  <% if current_user.joined?(@meetup) %>
-    <%= button_to "Leave", controller: "user_meetups", action: "destroy", meetup_id: @meetup.id, method: 'post' %>
-  <% else %>
-    <%= button_to "Join", controller: "user_meetups", action: "create", meetup_id: @meetup.id, method: 'post' %>
+<div>
+  <% if current_user.id != @meetup.host_id %>
+    <% if current_user.joined?(@meetup) %>
+      <%= button_to "Leave", controller: "user_meetups", action: "destroy", id: @meetup.id, method: 'post' %>
+    <% else %>
+      <%= button_to "Join", controller: "user_meetups", action: "create", id: @meetup.id, method: 'post' %>
+    <% end %>
   <% end %><br>
-<h6>Meetup Info: </h6>
-<h4> <%= @meetup.category %> </h4>
-<h4> <%= @meetup.location %> </h4>
-<h4> <%= @meetup.time.strftime("%As - %H:%M %P") %> </h4><br>
-<h6>About:</h6>
-<h5> <%= @meetup.description %> </h5>
+</div>
+
+
+  <h6 class="card-title"><b><%= @meetup.category %></b></h6>
+  <p class="card-text"><strong>Location: </strong><%= @meetup.location %></p>
+  <p class="card-text"><strong>Location: </strong><%= @meetup.time.strftime("%As - %H:%M %P") %></p>
+  <p class="card-text"><strong>About: </strong><%= @meetup.description %></p>
+
+</div>
+<div class="card-footer text-muted">
+</div>
+</div>
+
+<%= button_to "Edit Meetup", edit_meetup_path, method: 'get', class: "btn btn-primary" %><br>
+
 
 <%= form_for [@meetup, @comment] do |f| %>
   <small><%= f.label :content, "Add comment" %><br>
@@ -26,14 +40,14 @@
 
 <h5>Comments</h5>
 
-  <% @meetup.comments.each do |comment| %>
+  <% @meetup.comments.reverse.each do |comment| %>
     <p> <h6><%= link_to comment.user.username, user_path(comment.user) %> <small>said:  </small></h6></p>
 
 
   <div class="row">
    <div class="col s12 m12">
      <div class="card-panel blue">
-       <span class="white-text"> <%= comment.content %>
+       <span class="white-text"> <h6><%= comment.content %></h6>
        </span>
      </div>
    </div>

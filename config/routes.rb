@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
-  get '/signup', to: 'users#new', as: '/signup'
-  post '/signup', to: 'users#create', as: '/signed_up'
 
   get '/login', to: 'sessions#new', as: '/login'
   post '/login', to: 'sessions#create', as: '/logged_in'
 
+  get '/signup', to: 'users#new', as: '/signup'
+  post '/signup', to: 'users#create', as: '/signed_up'
+
   delete '/logout', to: 'sessions#destroy', as: '/logout'
 
   post "/meetup/:id", to: 'meetups#show'
+
+  resources :sessions
 
   resources :meetups do
     resources :comments
@@ -22,7 +25,7 @@ Rails.application.routes.draw do
 
   post '/user_meetups/:id', to: 'user_meetups#destroy'
 
-  resources :user_meetups
   resources :users
+  resources :user_meetups
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

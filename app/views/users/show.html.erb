@@ -1,15 +1,51 @@
-<h5>Profile</h5>
+<div class="card center-align">
+  <h4><% if current_user == @user %>
+    <%= "My" %>
+  <% else  %>
+    <%= @user.name %>'s
+  <% end  %> Profile</h4>
+</div>
 
-<h4>Name:</h6><%= @user.name %><br>
-<h4>Age:</h4><%= @user.age %><br>
-<h4>Gender:</h4><%= @user.gender %><br>
-<h4>Favorite Sport:</h4><%= @user.fav_sport%><br>
-<h4>Bio:</h4><%= @user.bio %><br>
 
-<% @user.meetups.each do |meetup| %>
-  <h1> <%= meetup.name %></h1>
-  <h5> <%= meetup.category %> </h5>
-  <h3> <%= meetup.location %> </h3>
-  <h3> <%= meetup.time.strftime("%A - %H:%M") %> </h3>
-  <p> <%= meetup.description %> </p>
-<% end %>
+<div class="card left-align">
+  <div class="card-header">
+    </div>
+      <div class="card-body">
+        <h5 class="card-title"><b>Name: </b><%= @user.name %><br></h5>
+        <p class="card-text"><b>Age: </b><%= @user.age %><br> </p>
+        <p class="card-text"><b>Gender: </b><%= @user.gender %></p>
+        <p class="card-text"><b>Favorite Sport: </b><%= @user.fav_sport%></p>
+        <p class="card-text"><b>Bio: </b><%= @user.bio %></p>
+      </div>
+    <div class="card-footer text-muted">
+  </div>
+</div>
+
+<br>
+
+
+<div class="card center-align">
+  <h4><% if current_user == @user %>
+    <%= "My" %>
+  <% else  %>
+    <%= @user.name %>'s
+  <% end  %> Meetups </h4>
+</div>
+
+
+  <% @user.meetups.each do |meetup| %>
+  <div class="card center-align">
+    <div class="card-header">
+      </div>
+        <div class="card-body">
+          <h5 class="card-title"><b><%= link_to meetup.name, meetup_path(meetup) %></b></h5>
+          <p class="card-text"><b>Category: </b><%= meetup.category %> </p>
+          <p class="card-text"><strong>Location: </strong><%= meetup.location %></p>
+          <p class="card-text"><b>Day & time: </b><%= meetup.time.strftime("%As - %H:%M") %></p>
+          <p class="card-text"><strong>About: </strong><%= meetup.description %></p>
+          <a href="<%= meetup_path(meetup) %>" class="btn btn-primary pulse">Explore</a>
+        </div>
+      <div class="card-footer text-muted">
+    </div>
+  </div>
+  <% end %>

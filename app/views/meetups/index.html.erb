@@ -9,15 +9,22 @@
 <% end %>
 
 
-<div class="row">
-  <h2>Meetups</h2>
-    <div class="col s12">
-
-      <ul>
-        <% @meetups.each do |meetup| %>
-          <li> <%= link_to meetup.name, meetup_path(meetup) %> </li><br>
-        <% end %>
-      </ul>
-
-  </div>
+<div class="card center-align">
+  <h2>Explore All Meetups</h2>
 </div>
+
+
+  <% @meetups.reverse.each do |meetup| %>
+  <div class="card center-align">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><b><%= meetup.name %></b></h5>
+    <p class="card-text"><strong>Location: </strong><%= meetup.location %></p>
+    <p class="card-text"><strong>About: </strong><%= meetup.description %></p>
+    <a href="<%= meetup_path(meetup) %>" class="btn btn-primary pulse">Explore</a>
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+  </div>
+  <% end %>

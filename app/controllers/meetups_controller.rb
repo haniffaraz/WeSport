@@ -1,6 +1,6 @@
 class MeetupsController < ApplicationController
 
-  before_action :find_meetup, only: [:show, :edit, :update, :destroy, :join, :leave]
+  before_action :find_meetup, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:category]
@@ -9,9 +9,9 @@ class MeetupsController < ApplicationController
       @meetups = Meetup.all
     end
 
-    if !logged_in?
-      redirect_to login_path
-    end
+    # if !logged_in?
+    #   redirect_to login_path
+    # end
   end
 
   def show
@@ -33,6 +33,10 @@ class MeetupsController < ApplicationController
     else
       render 'new'
     end
+
+    if !logged_in?
+      redirect_to login_path
+    end
   end
 
   def edit
@@ -47,6 +51,7 @@ class MeetupsController < ApplicationController
         render 'edit'
       end
     else
+      flash.now[:error] = 'Only the host can edit or delete a Meetup'
       redirect_to @meetup
     end
   end
@@ -58,6 +63,7 @@ class MeetupsController < ApplicationController
         redirect_to '/home'
       end
     else
+      flash.now[:error] = 'Only the host can edit or delete a Meetup'
       redirect_to '/home'
     end
   end
