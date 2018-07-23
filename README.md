@@ -1,24 +1,36 @@
-# README
+WeSports
+A Web Application that allows users to meet cool people and play sports with them. The app was built using ruby on rails as the backend and CSS Bootstrap as the frontend. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Getting Started
+By running the rails server, you will be able to use the backend. Opening the index.html in the browser starts the app. Then, if you are a first time visitor, create an account and check out how the app works.
 
-Things you may want to cover:
+Prerequisites
+You need to make a rails api using the new rails app command in the terminal. Then, use rails g model command to create models needed. After that, rails g controller command was used to create controllers and their corresponding views. 
 
-* Ruby version
+Demo
+https://youtu.be/WDhds5M_Q4U
 
-* System dependencies
+Deployment
+- the app was deployed on heroku
+https://wesports.herokuapp.com/
+the above link is the live app that shows the features of the app
 
-* Configuration
+Built With
+Ruby on Rails - The web framework used for the backend
+Postgresql - Database 
+Bootstrap - to design the frontend 
+Contributing
+Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
-* Database creation
+Versioning
+We use SemVer for versioning. For the versions available, see the tags on this repository.
 
-* Database initialization
+Authors
+Faraz Hanif
+Abdoul Diallo
 
-* How to run the test suite
+License
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Acknowledgments
+Materialize was used to design some of the frontend features
